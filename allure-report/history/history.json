@@ -1,0 +1,1 @@
+{"22844b67876a6f3ed1e18e750519a82e":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"d65ffff46e60e9f8","reportUrl":"http://localhost:8070/job/Test_TM500_Automation_Pipleline/34/allure/#testresult/d65ffff46e60e9f8","status":"passed","time":{"start":1715137369043,"stop":1715137369043,"duration":0}}]}}
