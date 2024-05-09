@@ -1,9 +1,10 @@
-import pytest,time,re,requests,json
+import pytest,time,re
 from class_moshellWSL import class_moshellcommandWSL
 from class_TMA_API import class_TMA_API
 
 finalpath=""
 finalverdict=""
+sessionName=""
 
 @pytest.fixture(scope="module")
 def moshell_command():
@@ -41,8 +42,9 @@ def test_step5_check_TMA_location(TMA_API):
 
 def test_step6_schedule_campaign(TMA_API):
     # path="C:\\Users\\rante\\Documents\\VIAVI\\TM500\\5G NR\\Test Mobile Application\\NLA6.23.0 Rev5\\MyCampaigns\\5G-TestCases.xml"
-    path="C:\\Users\\rante\\Documents\\VIAVI\\TM500\\5G NR\\Test Mobile Application\\NLA7.4.3 Rev2\\MyCampaigns\\5G-TestCases_N7.xml"
-    testcase1=[1]
+    # path="C:\\Users\\rante\\Documents\\VIAVI\\TM500\\5G NR\\Test Mobile Application\\NLA7.4.3 Rev2\\MyCampaigns\\5G-TestCases_N7.xml"
+    path="C:\\Users\\rante\\Documents\\VIAVI\\TM500\\5G NR\\Test Mobile Application\\NLA7.4.3 Rev2\\MyCampaigns\\NPI_TC-01.xml"
+    testcase1=[0]
     testcase2=["1UE-Attach","1UE-UDP"]
     result1,result2=TMA_API.schedule_campaign(path,testcase1)
     print(result1,result2)
@@ -81,13 +83,23 @@ def test_step8_generate_report_to_end(TMA_API):
     
     finalpath_match = re.search(r'C:\\.*_session', result2)
     finalpath = finalpath_match.group()
+    sessionName=finalpath.split("\\")[-1]
     assert finalpath_match is not None, "Final path not found"
     if finalpath is not None:
-        print("The report path is:", finalpath)
+        print("The report folder is:",sessionName)
+        assert sessionName is not None
     else:
         print("No report path found")
 
     finalverdict = result2[-4:]
     print("The final verdict is", finalverdict)
-    assert finalverdict is not None
+    assert finalverdict=="PASS"
 
+def test_step9_update_report_to_database(TMA_API):
+    if finalverdict=="PASS":
+        result1, result2 = TMA_API.send_to_Database("NPI-Test-May-09",sessionName,False)
+        print(result1,result2)
+        assert result1 == 200
+    else:
+        print(finalverdict)
+        assert finalverdict is not None

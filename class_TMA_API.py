@@ -323,6 +323,22 @@ class class_TMA_API:
             print(f"Request Error: {e}")
             return self.error_code,e.response
         
+    def send_to_Database(self,project,session,complete):
+        url_location="http://localhost:8603/load_tm500_reports_test"
+        jsonData={"projectname":project,"report_path":session,"completed":complete}
+        response = requests.post(url_location,data=json.dumps(jsonData),headers={"Content-Type":"application/json"})
+        try:
+            if response.status_code!=200:
+                print("Database API connection failed!")
+            else:
+                print("Database API call is successful")
+                print('\t'+response.text)
+            return response.status_code,response.text
+        except requests.exceptions.RequestException as e:
+            # Print the error if an exception occurred during the request
+            print(f"Request Error: {e}")
+            return self.error_code,e.response
+
     # Use following code to decide if this is a list of test names or test number 
     def check_list_type(self,lst):
         if isinstance(lst, list):
@@ -369,6 +385,7 @@ class class_TMA_API:
             return path
         else:
             return path
+
     
 if __name__ == "__main__":
     basictest=class_TMA_API()

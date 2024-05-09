@@ -1,0 +1,5 @@
+{'FILE_PATH': 'C:\\Users\\rante\\Documents\\VIAVI\\TM500\\5G NR\\Test Mobile Application\\NLA7.4.3 Rev2\\MyCampaigns\\NPI_TC-01.xml', 'ITERATION_COUNT': 1, 'ACTION_ON_EVENT': 2, 'TESTS_SELECTION_BY_INDEX': [0]}
+TMA campaign scheduling is successful
+TMA schedule ID is:
+	 NPI_TC-01_240509_114648285
+200  NPI_TC-01_240509_114648285
