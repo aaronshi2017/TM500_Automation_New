@@ -97,9 +97,14 @@ def test_step8_generate_report_to_end(TMA_API):
 
 def test_step9_update_report_to_database(TMA_API):
     if finalverdict=="PASS":
-        result1, result2 = TMA_API.send_to_Database("NPI-Test-May-09",sessionName,False)
+        result1, result2 = TMA_API.send_to_Database('NPI-Test-May-10',sessionName,False)
         print(result1,result2)
         assert result1 == 200
     else:
         print(finalverdict)
         assert finalverdict is not None
+
+    # result1, result2 = TMA_API.send_to_Database('NPI-Test-May-09','240509_114618_session',False)
+    # print(result1,result2)
+    # assert result1 == 200
+  

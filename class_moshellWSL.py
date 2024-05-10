@@ -5,7 +5,7 @@ import json
 import os
 
 class class_moshellcommandWSL:
-    default_command = 'moshell 169.254.2.2 "uv com_usernames=rbs;uv com_passwords=rbs;lt all;"'
+    default_command = 'moshell 169.254.2.2 "uv com_usernames=rbs;uv com_passwords=rbs;lt all;st cell;deb cell;"'
     output = "No command output"
 
     def __init__(self):

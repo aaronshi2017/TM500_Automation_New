@@ -1,6 +1,3 @@
-************** Moshell Command Execution *****************
-alt;
-moshell 169.254.2.2 "uv com_usernames=rbs;uv com_passwords=rbs;lt all;alt;"
 
 #####################################################################
 #            Welcome to MoShell 22.0u (LPA108514/1_R22U)            #
@@ -34,15 +31,15 @@ com_passwords=rbs
 
 169.254.2.2> lt all
 
-240509-11:46:04 169.254.2.2 22.0u  stopfile=/tmp/256834
+240509-13:19:12 169.254.2.2 22.0u  stopfile=/tmp/274752
 Trying rbs's password from uservariable com_passwords ...OK
 
-$ssh_pid = 256882
+$ssh_pid = 274800
 
 Connected to 169.254.2.2 (SubNetwork=ONRM_ROOT_MO,SubNetwork=Lab,MeContext=TLAB07X,ManagedElement=TLAB07X)
 
 Checking MOM version...MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be
-Parsing MOM (cached): /home/rantechdev/moshell_logfiles/logs_moshell/tempfiles/20240509-114604_256799/MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be.xml.cache.gz .................................................................................................................................................................................................................Done.
+Parsing MOM (cached): /home/rantechdev/moshell_logfiles/logs_moshell/tempfiles/20240509-131912_274717/MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be.xml.cache.gz .................................................................................................................................................................................................................Done.
 Using paramfile /home/rantechdev/moshell/commonjars/pm/PARAM_MSRBS_22.Q3.txt
 Parsing file /home/rantechdev/moshell/commonjars/pm/PARAM_MSRBS_22.Q3.txt ..............................................................................Done.
 Using imomdfile /home/rantechdev/moshell/commonjars/pm/IMOMD_MSRBS_21.Q3.txt
@@ -53,7 +50,7 @@ Last MO: 17452. Loaded 17452 MOs. Total: 17453 MOs.
 
 TLAB07X> alt
 
-240509-11:46:10 169.254.2.2 22.0u MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be stopfile=/tmp/256834
+240509-13:19:18 169.254.2.2 22.0u MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be stopfile=/tmp/274752
 
 Collecting Alarms...
 .
@@ -70,4 +67,3 @@ Date & Time (UTC)   S Specific Problem                    MO (Cause/AdditionalIn
 TLAB07X> q!!
 Bye...
 ]0; 
-

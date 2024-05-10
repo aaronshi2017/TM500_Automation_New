@@ -94,12 +94,12 @@ class class_TMA_API:
             "1UE-UDP"
         ]}
         print(jsonData)
-        response = requests.post(url_location,data=json.dumps(jsonData),headers={"Content-Type": "application/json"})
-        print(response)
-        jsonData = {"FILE_PATH": campaignPath,"ITERATION_COUNT": 1,"ACTION_ON_EVENT": 2, "TESTS_SELECTION_BY_NAME":testcaselist}
-        jsonString=json.dumps(jsonData)
-        print(jsonString)
         try:
+            response = requests.post(url_location,data=json.dumps(jsonData),headers={"Content-Type": "application/json"})
+            print(response)
+            jsonData = {"FILE_PATH": campaignPath,"ITERATION_COUNT": 1,"ACTION_ON_EVENT": 2, "TESTS_SELECTION_BY_NAME":testcaselist}
+            jsonString=json.dumps(jsonData)
+            print(jsonString)
             response = requests.post(url_location, data=jsonString, headers={"Content-Type":"application/json"})
             if response.status_code!=200:
                 print("TMA campaign scheduling is failed")
@@ -167,8 +167,9 @@ class class_TMA_API:
         
         jsonData = {"CAMPAIGN_NAME": self.scheduled,  "ADD_TO_ACTIVE_SCHEDULER": 1}
 
-        response = requests.post(url_location, data=json.dumps(jsonData), headers={"Content-Type":"application/json"})
+        
         try:
+            response = requests.post(url_location, data=json.dumps(jsonData), headers={"Content-Type":"application/json"})
             if response.status_code!=202:
                 print("TMA run campaign API failed!")
             else:
@@ -188,8 +189,9 @@ class class_TMA_API:
             return self.error_code,"No campaign is scheduled, can not execute RUN action!"
         
         jsonData = {"CAMPAIGN_NAME": self.scheduled,  "ADD_TO_ACTIVE_SCHEDULER": 1}
-        response = requests.post(url_location, data=json.dumps(jsonData), headers={"Content-Type":"application/json"})
+        
         try:
+            response = requests.post(url_location, data=json.dumps(jsonData), headers={"Content-Type":"application/json"})
             if response.status_code!=202:
                 print("TMA run campaign API failed!")
             else:
@@ -247,9 +249,8 @@ class class_TMA_API:
             return self.error_code,"Need to run campaign first!"
         
         jsonData = {"CAMPAIGN_NAME": self.scheduled}
-
-        response = requests.post(url_location, data=json.dumps(jsonData), headers={"Content-Type":"application/json"})
         try:
+            response = requests.post(url_location, data=json.dumps(jsonData), headers={"Content-Type":"application/json"})
             if response.status_code!=202:
                 print("TMA report generation API failed!")
             else:
@@ -264,8 +265,9 @@ class class_TMA_API:
     def get_status_report_generation(self):
     #API to generate report
         url_location = self.baseURL+"/0001/campaigns/actions/generatereport"      
-        response = requests.get(url_location,headers={"Content-Type":"application/json"})
+        
         try:
+            response = requests.get(url_location,headers={"Content-Type":"application/json"})
             if response.status_code!=200:
                 print("TMA report generation status check API failed!")
             else:
@@ -286,8 +288,8 @@ class class_TMA_API:
         
         jsonData = {"CAMPAIGN_NAME": self.scheduled}
 
-        response = requests.post(url_location, data=json.dumps(jsonData), headers={"Content-Type":"application/json"})
         try:
+            response = requests.post(url_location, data=json.dumps(jsonData), headers={"Content-Type":"application/json"})
             if response.status_code!=202:
                 print("TMA report generation API failed!")
                 return response.status_code,response.text
@@ -310,8 +312,9 @@ class class_TMA_API:
     #API to execute MCI command
         url_location = self.baseURL+"/0001/campaigns/actions/executecommand"      
         jsonData = {"MCI_COMMAND":command,"CMD_TIMEOUT":10}
-        response = requests.post(url_location,data=json.dumps(jsonData),headers={"Content-Type":"application/json"})
+       
         try:
+            response = requests.post(url_location,data=json.dumps(jsonData),headers={"Content-Type":"application/json"})
             if response.status_code!=200:
                 print("TMA MCI command execution API failed!")
             else:
@@ -324,10 +327,11 @@ class class_TMA_API:
             return self.error_code,e.response
         
     def send_to_Database(self,project,session,complete):
-        url_location="http://localhost:8603/load_tm500_reports_test"
+        url_location="http://192.168.10.100:3000/load_tm500_reports_test"
         jsonData={"projectname":project,"report_path":session,"completed":complete}
-        response = requests.post(url_location,data=json.dumps(jsonData),headers={"Content-Type":"application/json"})
+        
         try:
+            response = requests.post(url_location,data=json.dumps(jsonData),headers={"Content-Type":"application/json"})
             if response.status_code!=200:
                 print("Database API connection failed!")
             else:
@@ -390,41 +394,44 @@ class class_TMA_API:
 if __name__ == "__main__":
     basictest=class_TMA_API()
     # Test case1==================>
-    print(basictest.close_TMA())
-    print(basictest.open_TMA())
-    time.sleep(10)
-    print(basictest.check_TMA_Status())
-    print(basictest.check_TMA_location())
-    path2=r"C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA6.23.0 Rev5\MyCampaigns\5G-TestCases.xml"
-    path1=r"C:\TMA_Script\aaron_NSA - B7-N2.xml"
-    testcase1=[1,2]
-    testcase2=["MultiSlice","1UE-UDP"]
-    testcase3=["1UE-UDP"]
-    print(basictest.is_valid_xml_file(basictest.windows_to_wsl_path(path2)))
-    print(basictest.schedule_campaign(path2,testcase1))
-    # print(basictest.run_campaign_to_end())
-    print(basictest.run_campaign())
-    time.sleep(60)
-    print(basictest.check_Running_Campaign())
-    print(basictest.stop_Running_Campaign())
-    print(basictest.schedule_campaign(path2,testcase2))
-    # print(basictest.run_campaign_to_end())
-    print(basictest.run_campaign())
-    time.sleep(60)
-    print(basictest.check_Running_Campaign())
-    print(basictest.stop_Running_Campaign())
-    print(basictest.schedule_campaign(path2,testcase3))
-    # print(basictest.run_campaign_to_end())
-    print(basictest.run_campaign())
-    time.sleep(60)
-    print(basictest.check_Running_Campaign())
-    print(basictest.stop_Running_Campaign())
-    print(basictest.generate_report_to_end())
-    print(basictest.schedule_campaign(path,testcase2))
-    print(basictest.schedule_campaign(path))
-    # print(basictest.is_valid_xml_file("/mnt/c/Users/rante/Documents/VIAVI/TM500/5G NR/Test Mobile Application/NLA7.4.3 Rev2/MyCampaigns/NPI_TC-06.xml"))
-    # print(basictest.schedule_campaign("/mnt/c/Users/rante/Documents/VIAVI/TM500/5G NR/Test Mobile Application/NLA7.4.3 Rev2/MyCampaigns/NPI_TC-06.xml",[0,1]))
-    # Test case2 ========================>
-    path2=r"C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA6.23.0 Rev5\MyCampaigns\5G-TestCases.xml"
-    testcase2=["MultiSlice","1UE-UDP"]
-    print(basictest.schedule_campaign_new(path2,testcase2))
+    # print(basictest.close_TMA())
+    # print(basictest.open_TMA())
+    # time.sleep(10)
+    # print(basictest.check_TMA_Status())
+    # print(basictest.check_TMA_location())
+    # path2=r"C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA6.23.0 Rev5\MyCampaigns\5G-TestCases.xml"
+    # path1=r"C:\TMA_Script\aaron_NSA - B7-N2.xml"
+    # testcase1=[1,2]
+    # testcase2=["MultiSlice","1UE-UDP"]
+    # testcase3=["1UE-UDP"]
+    # print(basictest.is_valid_xml_file(basictest.windows_to_wsl_path(path2)))
+    # print(basictest.schedule_campaign(path2,testcase1))
+    # # print(basictest.run_campaign_to_end())
+    # print(basictest.run_campaign())
+    # time.sleep(60)
+    # print(basictest.check_Running_Campaign())
+    # print(basictest.stop_Running_Campaign())
+    # print(basictest.schedule_campaign(path2,testcase2))
+    # # print(basictest.run_campaign_to_end())
+    # print(basictest.run_campaign())
+    # time.sleep(60)
+    # print(basictest.check_Running_Campaign())
+    # print(basictest.stop_Running_Campaign())
+    # print(basictest.schedule_campaign(path2,testcase3))
+    # # print(basictest.run_campaign_to_end())
+    # print(basictest.run_campaign())
+    # time.sleep(60)
+    # print(basictest.check_Running_Campaign())
+    # print(basictest.stop_Running_Campaign())
+    # print(basictest.generate_report_to_end())
+    # print(basictest.schedule_campaign(path,testcase2))
+    # print(basictest.schedule_campaign(path))
+    # # print(basictest.is_valid_xml_file("/mnt/c/Users/rante/Documents/VIAVI/TM500/5G NR/Test Mobile Application/NLA7.4.3 Rev2/MyCampaigns/NPI_TC-06.xml"))
+    # # print(basictest.schedule_campaign("/mnt/c/Users/rante/Documents/VIAVI/TM500/5G NR/Test Mobile Application/NLA7.4.3 Rev2/MyCampaigns/NPI_TC-06.xml",[0,1]))
+    # # Test case2 ========================>
+    # path2=r"C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA6.23.0 Rev5\MyCampaigns\5G-TestCases.xml"
+    # testcase2=["MultiSlice","1UE-UDP"]
+    # print(basictest.schedule_campaign_new(path2,testcase2))
+
+    # Test case 3=========================>
+    print(basictest.send_to_Database("Aaron_Test4","240509_114618_session",False))
