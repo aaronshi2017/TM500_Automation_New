@@ -30,7 +30,7 @@ class class_gitHubUpload():
         # Check if 'origin' remote already exists
         try:
             origin = repo.remote(name='origin')
-            origin.set_url(f"git@github.com:{self.USERNAME}/{self.REPO_NAME}.git")
+            origin.set_url(f"git@github.com:{self.REPO_NAME}.git")
         except ValueError:
             # Create the origin remote if it doesn't exist
             origin = repo.create_remote("origin", url=f"git@github.com:{self.REPO_NAME}.git")
