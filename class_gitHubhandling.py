@@ -1,5 +1,5 @@
 import os
-from git import Repo
+from git import Repo, GitCommandError
 
 class class_gitHubUpload():
 
@@ -18,7 +18,7 @@ class class_gitHubUpload():
 
     def github_upload(self):
 
-        # Initialize the repository object
+       # Initialize the repository object
         repo = Repo.init(self.FILES_DIR)
 
         # Add all files to the repository
@@ -27,14 +27,22 @@ class class_gitHubUpload():
         # Commit changes
         repo.index.commit(self.COMMIT_MESSAGE)
 
-        # Get the origin remote
-        origin = repo.create_remote("origin", url=f"git@github.com:{self.USERNAME}/{self.REPO_NAME}.git")
+        # Check if 'origin' remote already exists
+        try:
+            origin = repo.remote(name='origin')
+            origin.set_url(f"git@github.com:{self.USERNAME}/{self.REPO_NAME}.git")
+        except ValueError:
+            # Create the origin remote if it doesn't exist
+            origin = repo.create_remote("origin", url=f"git@github.com:{self.USERNAME}/{self.REPO_NAME}.git")
 
         # Push changes to the remote repository
-        origin.push(refspec=f"HEAD:{self.BRANCH_NAME}")
+        try:
+            origin.push(refspec=f"HEAD:{self.BRANCH_NAME}")
+        except GitCommandError as e:
+            print(f"Error pushing to remote: {e}")
 
         print("Files uploaded successfully!")
-    
+        
 if __name__ == "__main__":
     github=class_gitHubUpload("Project_Test")
     github.github_upload()
