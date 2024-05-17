@@ -1,32 +1,41 @@
-from github import Github
 import os
+from git import Repo
 
-# Replace with your GitHub personal access token and repository details
-GITHUB_TOKEN = 'your_github_token'
-REPO_NAME = 'your_github_username/your_repo_name'
+class class_gitHubUpload():
 
-def upload_file_to_github(token, repo_name, file_path, commit_message):
-    g = Github(token)
-    repo = g.get_repo(repo_name)
+    # Set your GitHub username and repository name
+    USERNAME = "aaronshi2017"
+    REPO_NAME = "https://github.com/aaronshi2017/TM500_Automation_New"
+    # Set the directory where your files are located
+    FILES_DIR = "/home/rantechdev/TM500_Automation/TM500Automation"
+    # Set the branch name
+    BRANCH_NAME = "newbranch"
+    #Set your commit message
+    COMMIT_MESSAGE = "5-17-test"
 
-    with open(file_path, 'r') as file:
-        content = file.read()
+    def __init__(self,project):
+        self.COMMIT_MESSAGE=project
 
-    try:
-        # Check if the file already exists in the repository
-        contents = repo.get_contents(file_path)
-        repo.update_file(contents.path, commit_message, content, contents.sha)
-        print(f"File '{file_path}' updated successfully in GitHub repository '{repo_name}'.")
-    except:
-        repo.create_file(file_path, commit_message, content)
-        print(f"File '{file_path}' created successfully in GitHub repository '{repo_name}'.")
+    def github_upload(self):
 
+        # Initialize the repository object
+        repo = Repo.init(self.FILES_DIR)
+
+        # Add all files to the repository
+        repo.index.add("*")
+
+        # Commit changes
+        repo.index.commit(self.COMMIT_MESSAGE)
+
+        # Get the origin remote
+        origin = repo.create_remote("origin", url=f"git@github.com:{self.USERNAME}/{self.REPO_NAME}.git")
+
+        # Push changes to the remote repository
+        origin.push(refspec=f"HEAD:{self.BRANCH_NAME}")
+
+        print("Files uploaded successfully!")
+    
 if __name__ == "__main__":
-    file_path = 'test_example.py'
-    commit_message = 'Add auto-generated pytest file'
+    github=class_gitHubUpload("Project_Test")
+    github.github_upload()
 
-    # Generate the pytest file
-    os.system('python3 generate_pytest.py')
-
-    # Upload the pytest file to GitHub
-    upload_file_to_github(GITHUB_TOKEN, REPO_NAME, file_path, commit_message)
