@@ -38,11 +38,10 @@ class class_gitHubUpload():
         # Push changes to the remote repository
         try:
             origin.push(refspec=f"HEAD:{self.BRANCH_NAME}")
+            print("Files uploaded successfully!")
         except GitCommandError as e:
             print(f"Error pushing to remote: {e}")
 
-        print("Files uploaded successfully!")
-        
 if __name__ == "__main__":
     github=class_gitHubUpload("Project_Test")
     github.github_upload()
