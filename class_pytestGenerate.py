@@ -31,7 +31,15 @@ class PytestGeneration:
 
     def generate_pytest_script(self):
         template="""
-import pytest,time,re
+import pytest,time,re,os,sys
+# Get the absolute path of the current script
+current_script_path = os.path.abspath(__file__)
+
+# Get the absolute path of the parent directory
+parent_directory = os.path.dirname(current_script_path)
+
+# Add the parent directory to the sys.path list
+sys.path.append(parent_directory)
 from class_moshellWSL import class_moshellcommandWSL
 from class_TMA_API import class_TMA_API
 
@@ -74,7 +82,7 @@ def test_step5_check_TMA_location(TMA_API):
     assert result1==200
 
 def test_step6_schedule_campaign(TMA_API):
-    path="{arg2}"
+    path=r"{arg2}"
     testcase={arg3}
     result1,result2=TMA_API.schedule_campaign(path,testcase)
     print(result1,result2)
