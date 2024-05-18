@@ -233,3 +233,6 @@ Project: Test_5-18
 XMLPath: C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA7.4.3 Rev2\MyCampaigns\NPI_TC-01.xml
 TestCases: ['npi_01_registration_LTEFDD', 'npi_15_IntraHO_LTEFDD']
 Moshellcommand: st cell;alt;
+Pytest script generated successfully: test_Test_5-18_2024-05-18_10-53-06.py
+127.0.0.1 - - [18/May/2024 10:53:07] "POST /testbuild HTTP/HTTP/1.1" 200 -
+127.0.0.1 - - [18/May/2024 10:53:07] "POST /testbuild HTTP/1.1" 200 -
