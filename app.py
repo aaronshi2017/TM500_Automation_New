@@ -1,10 +1,20 @@
 from flask import Flask, jsonify, request
+import logging
+from logging.handlers import TimedRotatingFileHandler
 from class_supportFunctions import SupportFunctions
 from class_pytestGenerate import PytestGeneration
 from class_gitHubhandling import class_gitHubUpload
 from class_moshellWSL import class_moshellcommandWSL
 
 app = Flask(__name__)
+
+# Configure logging
+path="./applogs"
+log_handler = TimedRotatingFileHandler(path+'app.log', when='midnight', interval=1, backupCount=7)
+log_handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+log_handler.setFormatter(formatter)
+app.logger.addHandler(log_handler)
 
 def process_arguments(project,xmlPath,testcases,moshellcommand):
     pytestScript=PytestGeneration(project,xmlPath,testcases,moshellcommand)
@@ -76,5 +86,5 @@ def api():
         return jsonify({"error": "No pytest script is generated"}), 400 
   
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4000)
+    app.run(host='0.0.0.0', port=4000,debug=True)
 

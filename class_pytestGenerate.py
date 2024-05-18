@@ -1,4 +1,4 @@
-import os
+import os,glob
 from datetime import datetime
 class PytestGeneration:
 
@@ -12,6 +12,22 @@ class PytestGeneration:
         self.XMLpath=XMLpath
         self.testcases=testcases
         self.moshellcommand=moshellcommand
+    
+    def rename_test_files_in_project_folders(self):
+        # Recursively search for all subfolders named 'project'
+        root_dir="."
+        for project_folder in glob.glob(os.path.join(root_dir, '**', 'Project'), recursive=True):
+            # Find all files in the 'project' subfolder that start with 'test'
+            for test_file in glob.glob(os.path.join(project_folder, 'test*')):
+                # Get the directory and file name
+                directory = os.path.dirname(test_file)
+                filename = os.path.basename(test_file)
+                # Construct the new file name
+                new_filename = 'old_' + filename
+                new_file_path = os.path.join(directory, new_filename)
+                # Rename the file
+                os.rename(test_file, new_file_path)
+                print(f'Renamed: {test_file} to {new_file_path}')
 
     def generate_pytest_script(self):
         template="""
@@ -106,8 +122,12 @@ def test_step9_update_report_to_database(TMA_API):
         )
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         testname='test_'+self.project+'_'+timestamp+'.py'
+        path="./Project/"
+        # Define the file path within the project folder
+        file_path = os.path.join(path, testname)
+        self.rename_test_files_in_project_folders()
         try:
-            with open(testname, 'w') as f:
+            with open(file_path, 'w') as f:
                 f.write(script_content)        
             print("Pytest script is created successfully.")
             return testname
@@ -122,5 +142,6 @@ if __name__ == "__main__":
     arg4 = 'TM500_Automaton_Auto_Generate1'
     generate=PytestGeneration(arg4,arg2,arg3,arg1)
     generate.generate_pytest_script()
+    # generate.rename_test_files_in_project_folders()
 
 
