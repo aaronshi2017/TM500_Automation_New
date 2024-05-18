@@ -1,14 +1,3 @@
-[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:4000
- * Running on http://172.21.61.205:4000
-[33mPress CTRL+C to quit[0m
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 951-346-808
-127.0.0.1 - - [18/May/2024 08:24:32] "POST /moshell HTTP/HTTP/1.1"
-moshell st cell;alt
-************** Moshell Command Execution *****************
 
 #####################################################################
 #            Welcome to MoShell 22.0u (LPA108514/1_R22U)            #
@@ -42,15 +31,15 @@ com_passwords=rbs
 
 169.254.2.2> lt all
 
-240518-08:24:33 169.254.2.2 22.0u  stopfile=/tmp/18198
+240518-10:47:15 169.254.2.2 22.0u  stopfile=/tmp/73983
 Trying rbs's password from uservariable com_passwords ...OK
 
-$ssh_pid = 18247
+$ssh_pid = 74031
 
 Connected to 169.254.2.2 (SubNetwork=ONRM_ROOT_MO,SubNetwork=Lab,MeContext=TLAB07X,ManagedElement=TLAB07X)
 
 Checking MOM version...MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be
-Parsing MOM (cached): /home/rantechdev/moshell_logfiles/logs_moshell/tempfiles/20240518-082432_18162/MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be.xml.cache.gz .................................................................................................................................................................................................................Done.
+Parsing MOM (cached): /home/rantechdev/moshell_logfiles/logs_moshell/tempfiles/20240518-104715_73945/MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be.xml.cache.gz .................................................................................................................................................................................................................Done.
 Using paramfile /home/rantechdev/moshell/commonjars/pm/PARAM_MSRBS_22.Q3.txt
 Parsing file /home/rantechdev/moshell/commonjars/pm/PARAM_MSRBS_22.Q3.txt ..............................................................................Done.
 Using imomdfile /home/rantechdev/moshell/commonjars/pm/IMOMD_MSRBS_21.Q3.txt
@@ -61,7 +50,102 @@ Last MO: 17574. Loaded 17574 MOs. Total: 17575 MOs.
 
 TLAB07X> st cell
 
-240518-08:24:38 169.254.2.2 22.0u MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be stopfile=/tmp/18198
+240518-10:47:22 169.254.2.2 22.0u MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be stopfile=/tmp/73983
+===================================================================================
+Proxy  Adm State     Op. State     MO
+===================================================================================
+   46  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,EUtranCellFDD=TLAB07X12F1A
+  148  1 (UNLOCKED)  1 (ENABLED)   ENodeBFunction=1,EUtranCellFDD=TLAB07X2F1A
+  252  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,EUtranCellFDD=TLAB07X4F1A
+  355  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,EUtranCellFDD=TLAB07X4F1B
+  457  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,EUtranCellFDD=TLAB07X4F1C
+  559  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,EUtranCellFDD=TLAB07X4F1D
+  661  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,EUtranCellFDD=TLAB07X5F1A
+  763  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,EUtranCellFDD=TLAB07X5F1C
+  865  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,EUtranCellFDD=TLAB07X71F1A
+  967  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,EUtranCellFDD=TLAB07X7F1A
+ 1068  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,EUtranCellFDD=TLAB07X7F1C
+ 1169  1 (UNLOCKED)  1 (ENABLED)   ENodeBFunction=1,EUtranCellFDD=TLAB07X7F1D
+ 1271  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,EUtranCellFDD=TLAB07X7F1F
+ 1506  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,NbIotCell=TLAB07X12F1A
+ 1507  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,NbIotCell=TLAB07X4F1A
+ 1508  1 (UNLOCKED)  0 (DISABLED)  ENodeBFunction=1,NbIotCell=TLAB07X4F1C
+ 2042                0 (DISABLED)  GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X12F1A
+ 2043                1 (ENABLED)   GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X2F1A
+ 2044                0 (DISABLED)  GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X4F1A
+ 2045                0 (DISABLED)  GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X4F1B
+ 2046                0 (DISABLED)  GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X4F1C
+ 2047                0 (DISABLED)  GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X4F1D
+ 2048                0 (DISABLED)  GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X5F1A
+ 2049                0 (DISABLED)  GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X5F1C
+ 2050                0 (DISABLED)  GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X71F1A
+ 2051                0 (DISABLED)  GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X7F1A
+ 2052                0 (DISABLED)  GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X7F1C
+ 2053                1 (ENABLED)   GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X7F1D
+ 2054                0 (DISABLED)  GNBCUCPFunction=1,EUtraNetwork=1,ExternalENodeBFunction=auto302_720_3_41062,ExternalEUtranCell=TLAB07X7F1F
+ 2626  1 (UNLOCKED)  1 (ENABLED)   GNBDUFunction=1,NRCellDU=TLAB07X2F2A
+ 2628  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X4F1B
+ 2630  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X4F1D
+ 2632  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X4F2A
+ 2634  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X4F2C
+ 2636  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X5F1B
+ 2638  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X5F1C
+ 2640  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X71F1A
+ 2642  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X78F1B
+ 2644  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X78F1C
+ 2646  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X7F1B
+ 2648  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X7F1C
+ 2650  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X7F1E
+ 2652  1 (UNLOCKED)  0 (DISABLED)  GNBDUFunction=1,NRCellDU=TLAB07X7F1F
+===================================================================================
+Total: 43 MOs
+
+TLAB07X> deb cell
+
+240518-10:47:22 169.254.2.2 22.0u MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be stopfile=/tmp/73983
+
+============================================================================================================
+  Id   MO                                                            administrativeState  Result
+============================================================================================================
+
+$netconf_pid = 74117
+
+   46  EUtranCellFDD=TLAB07X12F1A                                    1                    >>> Set.
+  148  EUtranCellFDD=TLAB07X2F1A                                     1                    >>> Set.
+  252  EUtranCellFDD=TLAB07X4F1A                                     1                    >>> Set.
+  355  EUtranCellFDD=TLAB07X4F1B                                     1                    >>> Set.
+  457  EUtranCellFDD=TLAB07X4F1C                                     1                    >>> Set.
+  559  EUtranCellFDD=TLAB07X4F1D                                     1                    >>> Set.
+  661  EUtranCellFDD=TLAB07X5F1A                                     1                    >>> Set.
+  763  EUtranCellFDD=TLAB07X5F1C                                     1                    >>> Set.
+  865  EUtranCellFDD=TLAB07X71F1A                                    1                    >>> Set.
+  967  EUtranCellFDD=TLAB07X7F1A                                     1                    >>> Set.
+ 1068  EUtranCellFDD=TLAB07X7F1C                                     1                    >>> Set.
+ 1169  EUtranCellFDD=TLAB07X7F1D                                     1                    >>> Set.
+ 1271  EUtranCellFDD=TLAB07X7F1F                                     1                    >>> Set.
+ 1506  NbIotCell=TLAB07X12F1A                                        1                    >>> Set.
+ 1507  NbIotCell=TLAB07X4F1A                                         1                    >>> Set.
+ 1508  NbIotCell=TLAB07X4F1C                                         1                    >>> Set.
+ 2626  NRCellDU=TLAB07X2F2A                                          1                    >>> Set.
+ 2628  NRCellDU=TLAB07X4F1B                                          1                    >>> Set.
+ 2630  NRCellDU=TLAB07X4F1D                                          1                    >>> Set.
+ 2632  NRCellDU=TLAB07X4F2A                                          1                    >>> Set.
+ 2634  NRCellDU=TLAB07X4F2C                                          1                    >>> Set.
+ 2636  NRCellDU=TLAB07X5F1B                                          1                    >>> Set.
+ 2638  NRCellDU=TLAB07X5F1C                                          1                    >>> Set.
+ 2640  NRCellDU=TLAB07X71F1A                                         1                    >>> Set.
+ 2642  NRCellDU=TLAB07X78F1B                                         1                    >>> Set.
+ 2644  NRCellDU=TLAB07X78F1C                                         1                    >>> Set.
+ 2646  NRCellDU=TLAB07X7F1B                                          1                    >>> Set.
+ 2648  NRCellDU=TLAB07X7F1C                                          1                    >>> Set.
+ 2650  NRCellDU=TLAB07X7F1E                                          1                    >>> Set.
+ 2652  NRCellDU=TLAB07X7F1F                                          1                    >>> Set.
+============================================================================================================
+Total: 30 MOs attempted, 30 MOs set
+
+TLAB07X> st cell
+
+240518-10:47:24 169.254.2.2 22.0u MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be stopfile=/tmp/73983
 ===================================================================================
 Proxy  Adm State     Op. State     MO
 ===================================================================================
@@ -113,7 +197,7 @@ Total: 43 MOs
 
 TLAB07X> alt
 
-240518-08:24:38 169.254.2.2 22.0u MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be stopfile=/tmp/18198
+240518-10:47:24 169.254.2.2 22.0u MSRBS_NODE_MODEL_24.Q1_651.28230.122_e9be stopfile=/tmp/73983
 
 Collecting Alarms...
 ...
@@ -141,86 +225,3 @@ Date & Time (UTC)   S Specific Problem                    MO (Cause/AdditionalIn
 TLAB07X> q!!
 Bye...
 ]0; 
-
-127.0.0.1 - - [18/May/2024 08:24:38] "POST /moshell HTTP/HTTP/1.1" 200 -
-127.0.0.1 - - [18/May/2024 08:24:38] "POST /moshell HTTP/1.1" 200 -
- * Detected change in '/home/rantechdev/TM500_Automation/TM500Automation/app.py', reloading
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 951-346-808
- * Detected change in '/home/rantechdev/TM500_Automation/TM500Automation/app.py', reloading
- * Restarting with stat
-[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:4000
- * Running on http://172.21.61.205:4000
-[33mPress CTRL+C to quit[0m
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 951-346-808
-127.0.0.1 - - [18/May/2024 08:49:26] "POST /testbuild HTTP/HTTP/1.1"
-************** Input Info*****************
-Project: Test_5-17
-XMLPath: C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA7.4.3 Rev2\MyCampaigns\NPI_TC-01.xml
-TestCases: ['1UE-Attach', '1UE-UDP']
-Moshellcommand: st cell;alt;
-Pytest script generated successfully: test_Test_5-17_2024-05-18_08-49-26.py
-127.0.0.1 - - [18/May/2024 08:49:27] "POST /testbuild HTTP/HTTP/1.1" 200 -
-127.0.0.1 - - [18/May/2024 08:49:27] "POST /testbuild HTTP/1.1" 200 -
- * Detected change in '/home/rantechdev/TM500_Automation/TM500Automation/class_gitHubhandling.py', reloading
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 951-346-808
- * Detected change in '/home/rantechdev/TM500_Automation/TM500Automation/class_gitHubhandling.py', reloading
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 951-346-808
- * Detected change in '/home/rantechdev/TM500_Automation/TM500Automation/class_gitHubhandling.py', reloading
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 951-346-808
-[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:4000
- * Running on http://172.21.61.205:4000
-[33mPress CTRL+C to quit[0m
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 951-346-808
-127.0.0.1 - - [18/May/2024 10:41:25] "POST /testbuild HTTP/HTTP/1.1"
-************** Input Info*****************
-Project: Test_5-17
-XMLPath: C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA7.4.3 Rev2\MyCampaigns\NPI_TC-01.xml
-TestCases: ['1UE-Attach', '1UE-UDP']
-Moshellcommand: st cell;alt;
-Pytest script generated successfully: test_Test_5-17_2024-05-18_10-41-25.py
-127.0.0.1 - - [18/May/2024 10:41:26] "POST /testbuild HTTP/HTTP/1.1" 200 -
-127.0.0.1 - - [18/May/2024 10:41:26] "POST /testbuild HTTP/1.1" 200 -
- * Detected change in '/home/rantechdev/TM500_Automation/TM500Automation/class_pytestGenerate.py', reloading
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 951-346-808
-127.0.0.1 - - [18/May/2024 10:42:32] "POST /testbuild HTTP/HTTP/1.1"
-************** Input Info*****************
-Project: Test_5-17
-XMLPath: C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA7.4.3 Rev2\MyCampaigns\NPI_TC-01.xml
-TestCases: ['1UE-Attach', '1UE-UDP']
-Moshellcommand: st cell;alt;
-Pytest script generated successfully: test_Test_5-17_2024-05-18_10-42-32.py
-127.0.0.1 - - [18/May/2024 10:42:33] "POST /testbuild HTTP/HTTP/1.1" 200 -
-127.0.0.1 - - [18/May/2024 10:42:33] "POST /testbuild HTTP/1.1" 200 -
-127.0.0.1 - - [18/May/2024 10:46:51] "POST /testbuild HTTP/HTTP/1.1"
-************** Input Info*****************
-Project: Test_5-17
-XMLPath: C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA7.4.3 Rev2\MyCampaigns\NPI_TC-01.xml
-TestCases: ['npi_01_registration_LTEFDD', 'npi_15_IntraHO_LTEFDD']
-Moshellcommand: st cell;alt;
-Pytest script generated successfully: test_Test_5-17_2024-05-18_10-46-51.py
-127.0.0.1 - - [18/May/2024 10:46:52] "POST /testbuild HTTP/HTTP/1.1" 200 -
-127.0.0.1 - - [18/May/2024 10:46:52] "POST /testbuild HTTP/1.1" 200 -
-127.0.0.1 - - [18/May/2024 10:49:55] "POST /testbuild HTTP/HTTP/1.1"
-************** Input Info*****************
-Project: Test_5-18
-XMLPath: C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA7.4.3 Rev2\MyCampaigns\NPI_TC-01.xml
-TestCases: ['npi_01_registration_LTEFDD', 'npi_15_IntraHO_LTEFDD']
-Moshellcommand: st cell;alt;
