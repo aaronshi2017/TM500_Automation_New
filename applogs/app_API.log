@@ -193,3 +193,16 @@ Project: Test_5-17
 XMLPath: C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA7.4.3 Rev2\MyCampaigns\NPI_TC-01.xml
 TestCases: ['1UE-Attach', '1UE-UDP']
 Moshellcommand: st cell;alt;
+Pytest script generated successfully: test_Test_5-17_2024-05-18_10-41-25.py
+127.0.0.1 - - [18/May/2024 10:41:26] "POST /testbuild HTTP/HTTP/1.1" 200 -
+127.0.0.1 - - [18/May/2024 10:41:26] "POST /testbuild HTTP/1.1" 200 -
+ * Detected change in '/home/rantechdev/TM500_Automation/TM500Automation/class_pytestGenerate.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 951-346-808
+127.0.0.1 - - [18/May/2024 10:42:32] "POST /testbuild HTTP/HTTP/1.1"
+************** Input Info*****************
+Project: Test_5-17
+XMLPath: C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA7.4.3 Rev2\MyCampaigns\NPI_TC-01.xml
+TestCases: ['1UE-Attach', '1UE-UDP']
+Moshellcommand: st cell;alt;
