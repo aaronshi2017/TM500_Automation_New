@@ -9,9 +9,9 @@ class class_gitHubUpload():
     # Set the directory where your files are located
     FILES_DIR = "/home/rantechdev/TM500_Automation/TM500Automation"
     # Set the branch name
-    BRANCH_NAME = "newbranch"
+    BRANCH_NAME = "Demobranch"
     #Set your commit message
-    COMMIT_MESSAGE = "5-17-test"
+    COMMIT_MESSAGE = "5-18-test"
 
     def __init__(self,project):
         self.COMMIT_MESSAGE=project
