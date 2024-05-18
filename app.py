@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-import logging
+import logging,time,os
 from logging.handlers import TimedRotatingFileHandler
 from class_supportFunctions import SupportFunctions
 from class_pytestGenerate import PytestGeneration
@@ -8,13 +8,41 @@ from class_moshellWSL import class_moshellcommandWSL
 
 app = Flask(__name__)
 
+# # Configure logging
+log_directory = './applogs/'
+if not os.path.exists(log_directory):
+    os.makedirs(log_directory)
+
+class CustomFormatter(logging.Formatter):
+    def format(self, record):
+        log_message = super().format(record)
+        return log_message.replace('\\n', '\n')  # Ensure new lines are correctly formatted
+
 # Configure logging
-path="./applogs"
-log_handler = TimedRotatingFileHandler(path+'app.log', when='midnight', interval=1, backupCount=7)
+log_handler = TimedRotatingFileHandler(os.path.join(log_directory, 'app_API.log'), when='midnight', interval=1, backupCount=7)
 log_handler.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+# Define the log message format
+formatter = CustomFormatter('%(message)s')
 log_handler.setFormatter(formatter)
-app.logger.addHandler(log_handler)
+# Ensure the root logger is configured to capture logs
+logging.basicConfig(level=logging.INFO, handlers=[log_handler])
+# if not any(isinstance(handler, TimedRotatingFileHandler) for handler in app.logger.handlers):
+#     app.logger.addHandler(log_handler)
+# Ensure the handler is only added once and prevent propagation
+if not app.logger.handlers:
+    app.logger.addHandler(log_handler)
+    app.logger.setLevel(logging.INFO)
+    app.logger.propagate = False
+
+@app.before_request
+def log_request_info():
+    app.logger.info(f'{request.remote_addr} - - [{time.strftime("%d/%b/%Y %H:%M:%S")}] "{request.method} {request.path} {request.scheme.upper()}/{request.environ.get("SERVER_PROTOCOL")}"')
+
+@app.after_request
+def log_response_info(response):
+    app.logger.info(f'{request.remote_addr} - - [{time.strftime("%d/%b/%Y %H:%M:%S")}] "{request.method} {request.path} {request.scheme.upper()}/{request.environ.get("SERVER_PROTOCOL")}" {response.status_code} -')
+    return response
 
 def process_arguments(project,xmlPath,testcases,moshellcommand):
     pytestScript=PytestGeneration(project,xmlPath,testcases,moshellcommand)
@@ -34,6 +62,8 @@ def moshell():
     
     # Get JSON data from the request
     data = request.get_json()
+    app.logger.info(f'moshell {data["Moshell commands"]}')
+    app.logger.info('************** Moshell Command Execution *****************')
     inputCommands = data.get('Moshell commands')
     default_command = 'moshell 169.254.2.2 "uv com_usernames=rbs;uv com_passwords=rbs;lt all;"'
     finalcommand = f"{default_command[:-1]}{inputCommands}\""
@@ -41,6 +71,7 @@ def moshell():
     moshell_obj=class_moshellcommandWSL()
     moshell_result=moshell_obj.execute_command(finalcommand)
     if moshell_result:
+        app.logger.info(f'{moshell_result}')
         return jsonify({'result': 'Moshell command execution\n:'+moshell_result})
     else:
         return jsonify({"error": "Something wrong"}), 400 
@@ -61,6 +92,12 @@ def api():
     XMLpath = data.get('XMLPath')
     testcases = data.get('TestCases')
     moshellcommand=data.get('Moshellcommand')
+    
+    app.logger.info('************** Input Info*****************')
+    app.logger.info(f'Project: {data["Project"]}')
+    app.logger.info(f'XMLPath: {data["XMLPath"]}')
+    app.logger.info(f'TestCases: {data["TestCases"]}')
+    app.logger.info(f'Moshellcommand: {data["Moshellcommand"]}')
 
     if type(project) != str:
         return jsonify({"error": "Invalid Project Name!"}), 400
@@ -69,20 +106,25 @@ def api():
     
     XMLpath_validation, XMLpath_result=supportFunction.is_valid_xml_file(WSLpath)
     if not XMLpath_validation:
+        app.logger.info(f'XML path validation failed: {XMLpath_result}')
         return jsonify({"error": XMLpath_result}), 400 
 
     listtype=supportFunction.check_list_type(testcases)
     if not (listtype=="List of numbers" or listtype=="List of strings"):
+        app.logger.info(f'Test cases are not a list of valid test case string: {listtype}')
         return jsonify({"error": listtype}), 400 
     
     if type(moshellcommand) != str:
+        app.logger.info(f'Moshell command is not a string of commands: {moshellcommand}')
         return jsonify({"error": "Invalid Project Name!"}), 400
 
     # Call the Python function with the arguments
     result=process_arguments(project,XMLpath,testcases,moshellcommand)
     if result:
+        app.logger.info(f'Pytest script generated successfully: {result}')
         return jsonify({'result': 'Pytest script generated successfully:'+result})
     else:
+        app.logger.info(f'Pytest script generated failed: {result}')
         return jsonify({"error": "No pytest script is generated"}), 400 
   
 if __name__ == '__main__':
