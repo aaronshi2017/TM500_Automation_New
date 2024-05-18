@@ -9,7 +9,7 @@ class class_gitHubUpload():
     # Set the directory where your files are located
     FILES_DIR = "/home/rantechdev/TM500_Automation/TM500Automation"
     # Set the branch name
-    BRANCH_NAME = "Demobranch"
+    BRANCH_NAME = "newbranch"
     #Set your commit message
     COMMIT_MESSAGE = "5-18-test"
 
