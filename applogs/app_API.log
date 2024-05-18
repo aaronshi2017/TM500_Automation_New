@@ -179,3 +179,17 @@ Pytest script generated successfully: test_Test_5-17_2024-05-18_08-49-26.py
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 951-346-808
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:4000
+ * Running on http://172.21.61.205:4000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 951-346-808
+127.0.0.1 - - [18/May/2024 10:41:25] "POST /testbuild HTTP/HTTP/1.1"
+************** Input Info*****************
+Project: Test_5-17
+XMLPath: C:\Users\rante\Documents\VIAVI\TM500\5G NR\Test Mobile Application\NLA7.4.3 Rev2\MyCampaigns\NPI_TC-01.xml
+TestCases: ['1UE-Attach', '1UE-UDP']
+Moshellcommand: st cell;alt;
