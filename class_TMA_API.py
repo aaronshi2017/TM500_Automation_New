@@ -167,7 +167,6 @@ class class_TMA_API:
             return self.error_code,"No campaign is scheduled, can not execute RUN action!"
         
         jsonData = {"CAMPAIGN_NAME": self.scheduled,  "ADD_TO_ACTIVE_SCHEDULER": 1}
-
         
         try:
             response = requests.post(url_location, data=json.dumps(jsonData), headers={"Content-Type":"application/json"})

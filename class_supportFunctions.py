@@ -50,7 +50,20 @@ class SupportFunctions:
         else:
             return path
 
-
+if __name__ == "__main__":
+        # Example input values
+    arg1 = "alt;st cell"
+    arg2 = "C:\\Users\\rante\\Documents\\VIAVI\\TM500\\5G NR\\Test Mobile Application\\NLA7.4.3 Rev2\\MyCampaigns\\NPI_TC-01.xml"
+    arg3 = ["1UE-Attach","1UE-UDP"]
+    arg4 = 'TM500_Automaton_Auto_Generate1'
+       
+    support=SupportFunctions()
+    result1,result2=support.is_valid_xml_file(support.windows_to_wsl_path(arg2))
+    if result1:
+        print(result2)
+    else:
+        print("Not valid XML path")
+    
 
 
   
